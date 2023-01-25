@@ -8,5 +8,4 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>/static/*</url-pattern>
 	</servlet-mapping>
-
 </web-app>

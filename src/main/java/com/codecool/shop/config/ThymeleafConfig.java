@@ -14,7 +14,6 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
  */
 @WebListener
 public class ThymeleafConfig implements ServletContextListener {
-
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         TemplateEngine engine = templateEngine(sce.getServletContext());
