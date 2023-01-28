@@ -1,4 +1,4 @@
-package com.codecool.shop.dao.implementation;
+package com.codecool.shop.dao.implementation.mem;
 
 import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.model.User;

@@ -11,9 +11,9 @@ public class Product extends BaseModel {
     private Supplier supplier;
 
 
-    public Product(String name, BigDecimal defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {
+    public Product(String name, int defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {
         super(name, description);
-        this.setPrice(defaultPrice, currencyString);
+        this.setPrice(BigDecimal.valueOf(defaultPrice), currencyString);
         this.setSupplier(supplier);
         this.setProductCategory(productCategory);
     }

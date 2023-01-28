@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <meta name="author" content="Codecool" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta charset="utf-8"/>
+    <meta name="author" content="Codecool"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <title>Codecool Shop</title>
+    <title>Fajny shop</title>
+
+
 
     <!-- Bootstrap components -->
     <!-- Latest compiled and minified Jquery -->
@@ -14,29 +16,48 @@
 
     <!--Latest compiled and minified Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
-    <link rel="stylesheet" type="text/css" href="static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+
 </head>
 
 <body>
+<div class="jumbotron text-center"><h1>Fajny Shop</h1></div>
+<div id="sidenavTrigger"></div>
+<div id="sideNavMenu" class="sidenav">
 
-<div class="jumbotron text-center">
-    <h1>Codecool Shop</h1>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a class="navBarDropButton" data-toggle="collapse" href="#categoriesCollapse" role="button"
+       aria-expanded="false" aria-controls="categoriesCollapse">
+        Categories </a>
+    <div class="card card-body" id="categoriesCollapse">
+        <p th:each="category,iterStat : ${allcategories}"><a class="sidenav-a"
+                                                             th:attr="href='/?categoryId=' + ${category.getId()}"
+                                                             th:text="${category.getName()}"></a></p>
+    </div>
+
 </div>
 
-<div class="container">
-    <div class="card">
+
+<div id="main" class="container">
+
+    <div th:if="${category != null}" class="sub-title">
         <strong th:text="${category.name}">Category Title</strong>
+    </div>
+    <div th:if="${supplier != null}" class="sub-title">
+        <strong th:text="${supplier.name}">Supplier Title</strong>
     </div>
 
     <div id="products" class="row">
@@ -49,7 +70,7 @@
                 </div>
                 <div class="card-body">
                     <div class="card-text">
-                        <p class="lead" th:text="${prod.getPrice}">100 USD</p>
+                        <p class="lead" th:text="${prod.getPrice}"> USD</p>
                     </div>
                     <div class="card-text">
                         <a class="btn btn-success" href="#">Add to cart</a>

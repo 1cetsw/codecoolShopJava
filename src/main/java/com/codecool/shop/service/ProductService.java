@@ -5,15 +5,20 @@ import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService{
-    private ProductDao productDao;
-    private ProductCategoryDao productCategoryDao;
+    private final ProductDao productDao;
+    private final ProductCategoryDao productCategoryDao;
 
     public ProductService(ProductDao productDao, ProductCategoryDao productCategoryDao) {
         this.productDao = productDao;
         this.productCategoryDao = productCategoryDao;
+    }
+
+    public Product getProduct(int id){
+        return productDao.find(id);
     }
 
     public ProductCategory getProductCategory(int categoryId){
@@ -25,5 +30,8 @@ public class ProductService{
         return productDao.getBy(category);
     }
 
+    public List<Product> getAllProducts(){
+        return productDao.getAll();
+    }
 
-}
+    }

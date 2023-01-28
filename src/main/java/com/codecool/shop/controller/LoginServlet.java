@@ -2,7 +2,7 @@ package com.codecool.shop.controller;
 
 
 import com.codecool.shop.config.TemplateEngineUtil;
-import com.codecool.shop.dao.implementation.UserDaoMem;
+import com.codecool.shop.dao.implementation.mem.UserDaoMem;
 import com.codecool.shop.model.User;
 import com.codecool.shop.service.UserService;
 import org.thymeleaf.TemplateEngine;
