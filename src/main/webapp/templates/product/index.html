@@ -36,6 +36,12 @@
 
 <div class="container">
     <div class="card">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" th:href="${ctxPath} + '/category?category=1'">TABLET</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="${ctxPath} + '/category?category=2'">NOT TABLET</a></li>
+        </ul>
+    </div>
+    <div class="card">
         <strong th:text="${category.name}">Category Title</strong>
     </div>
 

@@ -7,7 +7,7 @@ import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
-import com.codecool.shop.dao.implementation.UserDaoMem;
+//import com.codecool.shop.dao.implementation.UserDaoMem;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
@@ -26,7 +26,7 @@ public class Initializer implements ServletContextListener {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
-        UserDao userDao = UserDaoMem.getInstance();
+        //UserDao userDao = UserDaoMem.getInstance();
 
 
         //setting up a new supplier
@@ -38,6 +38,8 @@ public class Initializer implements ServletContextListener {
         //setting up a new product category
         ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
         productCategoryDataStore.add(tablet);
+        ProductCategory notTablet = new ProductCategory("NOT A TABLET", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
+        productCategoryDataStore.add(notTablet);
 
         //setting up products and printing it
         productDataStore.add(new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
@@ -45,9 +47,10 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Amazon Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
         productDataStore.add(new Product("Amazon Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
         productDataStore.add(new Product("Amazon Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
-        productDataStore.add(new Product("Amazon Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
+        productDataStore.add(new Product("NOT A TABLET", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", notTablet, amazon));
 
-        userDao.addUser(User.builder().userId(1).userLogin("marcin").userPassword("1234").email("mm@mm.pl").userFullName("Marcin Maj").build());
-        userDao.addUser(User.builder().userId(2).userLogin("marcin1").userPassword("1234").email("aa@mm.pl").userFullName("Marcin Maj").build());
+
+        //userDao.addUser(User.builder().userId(1).userLogin("marcin").userPassword("1234").email("mm@mm.pl").userFullName("Marcin Maj").build());
+        //userDao.addUser(User.builder().userId(2).userLogin("marcin1").userPassword("1234").email("aa@mm.pl").userFullName("Marcin Maj").build());
     }
 }

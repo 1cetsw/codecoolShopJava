@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/"})
+@WebServlet(urlPatterns = {"/category"})
 public class ProductController extends HttpServlet {
 
     @Override
@@ -26,11 +26,25 @@ public class ProductController extends HttpServlet {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         ProductService productService = new ProductService(productDataStore,productCategoryDataStore);
+        Integer category = null;
 
+        try{
+            category = Integer.parseInt(req.getParameter("category"));
+
+        } catch (Exception e) {
+            category = 1;
+            return;
+        }
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-        context.setVariable("category", productService.getProductCategory(1));
-        context.setVariable("products", productService.getProductsForCategory(1));
+        context.setVariable("ctxPath",req.getContextPath());
+        context.setVariable("category", productService.getProductCategory(category));
+        context.setVariable("products", productService.getProductsForCategory(category));
+
+
+
+
+
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();
         // params.put("category", productCategoryDataStore.find(1));
