@@ -7,6 +7,7 @@ import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.service.ActiveDataSourceService;
 import com.codecool.shop.service.ProductService;
 
+import com.codecool.shop.service.SupplierService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import javax.servlet.ServletException;
@@ -31,7 +32,7 @@ public class ProductController extends HttpServlet {
         //Services
 
         ProductService productService = new ProductService(productDataStore, productCategoryDataStore);
-
+        SupplierService supplierService = new SupplierService(supplierDataStore);
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
@@ -51,9 +52,9 @@ public class ProductController extends HttpServlet {
             context.setVariable("products", productService.getAllProducts());
 
         }
-
+        //display  category and suppliers in home page
         context.setVariable("allcategories", productCategoryDataStore.getAll());
-
+        context.setVariable("allsuppliers", supplierService.getAllSuppliers());
 
 
 

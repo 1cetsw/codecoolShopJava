@@ -7,8 +7,6 @@
 
     <title>Fajny shop</title>
 
-
-
     <!-- Bootstrap components -->
     <!-- Latest compiled and minified Jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -29,12 +27,15 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
+
     <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
 
 </head>
 
 <body>
-<div class="jumbotron text-center"><h1>Fajny Shop</h1></div>
+<div class="jumbotron text-center">
+    <a href="/" id="main-title"><h1>Fajny shop</h1></a>
+
 <div id="sidenavTrigger"></div>
 <div id="sideNavMenu" class="sidenav">
 
@@ -48,17 +49,26 @@
                                                              th:text="${category.getName()}"></a></p>
     </div>
 
+    <a class="navBarDropButton" data-toggle="collapse" href="#suppliersCollapse" role="button" aria-expanded="false"
+       aria-controls="suppliersCollapse">
+        Suppliers </a>
+    <div class="card card-body" id="suppliersCollapse">
+        <p th:each="vendor,iterStat : ${allsuppliers}"><a class="sidenav-a"
+                                                          th:attr="href='/?supplierId=' + ${vendor.getId()}"
+                                                          th:text="${vendor.getName()}"></a></p>
+    </div>
+
 </div>
 
 
 <div id="main" class="container">
-
-    <div th:if="${category != null}" class="sub-title">
-        <strong th:text="${category.name}">Category Title</strong>
-    </div>
     <div th:if="${supplier != null}" class="sub-title">
         <strong th:text="${supplier.name}">Supplier Title</strong>
     </div>
+    <div th:if="${category != null}" class="sub-title">
+        <strong th:text="${category.name}">Category Title</strong>
+    </div>
+
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
@@ -73,7 +83,7 @@
                         <p class="lead" th:text="${prod.getPrice}"> USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success" href="#">Add to cart</a>
+                        <a class="btn btn-success  add-to-cart-button" >Add to cart</a>
                     </div>
                 </div>
             </div>
