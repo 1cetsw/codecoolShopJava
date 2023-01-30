@@ -26,10 +26,10 @@ public class Initializer implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ActiveDataSourceService activeDataSourceService = ActiveDataSourceService.getInstance();
-        DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+
         try {
             activeDataSourceService.getConfig();
-            databaseConnection.getInstance();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
