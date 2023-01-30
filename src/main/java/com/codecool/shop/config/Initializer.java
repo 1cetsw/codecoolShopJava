@@ -3,10 +3,11 @@ package com.codecool.shop.config;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
-
+import com.codecool.shop.loginSystem.*;
 import com.codecool.shop.dao.implementation.mem.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.mem.ProductDaoMem;
 import com.codecool.shop.dao.implementation.mem.SupplierDaoMem;
+import com.codecool.shop.loginSystem.MenuRegister;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
@@ -25,8 +26,10 @@ public class Initializer implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ActiveDataSourceService activeDataSourceService = ActiveDataSourceService.getInstance();
+        DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
         try {
             activeDataSourceService.getConfig();
+            databaseConnection.getInstance();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,4 +100,6 @@ public class Initializer implements ServletContextListener {
 
 
     }
+
+
 }

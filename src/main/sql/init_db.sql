@@ -40,6 +40,19 @@ CREATE TABLE public.supplier
     description text
 );
 
+DROP TABLE IF EXISTS public.users;
+CREATE TABLE public.users
+(
+
+    username        char,
+    password        char,
+    emailadress     char
+);
+
+INSERT INTO users (username, password,emailaddress)
+VALUES ('admin', '123','admin@admin.com')
+      ;
+
 INSERT INTO supplier (name, description)
 VALUES ('fajny1', 'opis'),
        ('fajny2', 'opis'),
