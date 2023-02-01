@@ -4,7 +4,6 @@ package com.codecool.shop.service;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
-import com.codecool.shop.loginSystem.DatabaseConnection;
 import com.codecool.shop.dao.implementation.jdbc.ProductCategoryDaoJDBC;
 import com.codecool.shop.dao.implementation.jdbc.ProductDaoJDBC;
 import com.codecool.shop.dao.implementation.jdbc.SupplierDaoJDBC;
@@ -16,8 +15,6 @@ import com.codecool.shop.dao.implementation.mem.SupplierDaoMem;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 

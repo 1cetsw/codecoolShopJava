@@ -33,6 +33,15 @@
 </head>
 
 <body>
+
+<form action="/login" name="f" th:action="@{/login}">
+    <input type="submit" value="Login" />
+</form>
+<form action="/home" name="f" th:action="@{/home}">
+    <input type="submit" value="Registration" />
+</form>
+<div class="center "><a href="/"><img alt="logo" src="../static/img/logo.png"
+                                      width="35%" height="35%"></a></div>
 <div class="jumbotron text-center">
     <a href="/" id="main-title"><h1>Fajny shop</h1></a>
 
