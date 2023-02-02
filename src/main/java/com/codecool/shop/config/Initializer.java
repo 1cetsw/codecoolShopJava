@@ -3,9 +3,7 @@ package com.codecool.shop.config;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
-import com.codecool.shop.dao.implementation.mem.ProductCategoryDaoMem;
-import com.codecool.shop.dao.implementation.mem.ProductDaoMem;
-import com.codecool.shop.dao.implementation.mem.SupplierDaoMem;
+import com.codecool.shop.dao.implementation.mem.*;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
@@ -20,6 +18,9 @@ import java.sql.SQLException;
 
 @WebListener
 public class Initializer implements ServletContextListener {
+
+    public static AllUsersCartsDaoImpl usersCarts = new AllUsersCartsDaoImpl();
+    public static UserCartDaoImpl userCart = new UserCartDaoImpl("Test User", 0);
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -42,7 +43,9 @@ public class Initializer implements ServletContextListener {
         }
     }
 
-    private void initializeMemDao() {
+
+
+    public void initializeMemDao() {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
@@ -58,6 +61,10 @@ public class Initializer implements ServletContextListener {
         supplierDataStore.add(supp3);
         supplierDataStore.add(supp4);
 
+        //Setting all users carts list
+        usersCarts.addNewCart(userCart);
+        System.out.println(usersCarts.getUserCart(0));
+        System.out.println("blablablablalblalslaldsfdsfsdfstrwtrwtrwtrwgtwregwdgdsfdsgdsg");
 
         //setting up a new product category
         ProductCategory cat1 = new ProductCategory("a1", "abc", "opis a1");
