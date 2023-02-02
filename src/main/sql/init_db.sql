@@ -49,7 +49,7 @@ CREATE TABLE public.users
     emailadress     char
 );
 
-INSERT INTO users (username, password,email)
+INSERT INTO users (name, password,email)
 VALUES ('admin', '123','admin@admin.com')
       ;
 

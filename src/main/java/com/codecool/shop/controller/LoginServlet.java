@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-        engine.process("login.html", context, resp.getWriter());
+        engine.process("login.jsp", context, resp.getWriter());
     }
 
     @Override

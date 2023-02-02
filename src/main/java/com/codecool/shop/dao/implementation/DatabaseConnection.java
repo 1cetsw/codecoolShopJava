@@ -1,6 +1,8 @@
 package com.codecool.shop.dao.implementation;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import org.postgresql.ds.PGSimpleDataSource;
 
@@ -20,4 +22,5 @@ public abstract class DatabaseConnection {
 
         this.dataSource = dataSource;
     }
+
 }
