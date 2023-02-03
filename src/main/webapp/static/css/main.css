@@ -73,14 +73,17 @@ body::-webkit-scrollbar {
     padding-top: 30px; /* Place content 60px from the top */
     transition: 0.6s; /* 0.5 second transition effect to slide in the sidenav */
     transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+
 }
 
 .sidenav .card-body {
     padding-left: 3rem;
+    z-index: 99;
 }
 
 .sidenav p {
     margin: 0;
+    z-index: 99;
 }
 
 #sideNavMenu .card p a {
@@ -90,7 +93,7 @@ body::-webkit-scrollbar {
     border-radius: 10px;
     text-align: center;
     padding: 8px 0 8px 0;
-
+    z-index: 99;
 }
 
 #sidenavTrigger a:hover {
@@ -98,6 +101,7 @@ height: 20%; /* 100% Full-height */
     min-width: 40px; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     left: 0;
+    z-index: 99;
     /* When you mouse over the navigation links, change their color */
 }
 
@@ -113,6 +117,7 @@ height: 20%; /* 100% Full-height */
     color: sandybrown;
     display: block;
     transition: 0.3s;
+    z-index: 99;
 }
 
 .sidenav a:hover {
@@ -127,6 +132,7 @@ height: 20%; /* 100% Full-height */
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+    z-index: 99;
 }
 
 
@@ -146,24 +152,15 @@ height: 20%; /* 100% Full-height */
     cursor: grab;
 }
 
-
-
-
-
 .container {
     margin-top: 15rem;
     z-index: 3;
 }
 
 
-
-
-
-
-
 table {
     border-collapse: unset;
-    width: 500px;
+    width: 100px;
 }
 
 
@@ -213,6 +210,8 @@ table {
 #footer {
     margin: 1rem;
 }
+
+
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
