@@ -1,10 +1,10 @@
 * {
-    background-image: url("../img/background.jpg");
+    background-image: url("/static/img/background.jpg");
     background-attachment: fixed;
 
 }
 body {
-    background-image: url("../img/background.jpg");
+    background-image: url("/static/img/background.jpg");
     background-attachment: fixed;
     overflow: scroll;
 }
@@ -16,8 +16,8 @@ body::-webkit-scrollbar {
 
 .item.list-group-item {
     float: none;
-    width: 100%;
-    background-color: #fff;
+    width: 20%;
+    /*background-color: #fff;*/
     margin-bottom: 10px;
 }
 
@@ -62,15 +62,15 @@ body::-webkit-scrollbar {
 
 /* The side navigation menu */
 .sidenav {
-    height: 100%; /* 100% Full-height */
+    height: 20%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
+    position: relative; /* Stay in place */
     z-index: 9999; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
     background-color: #2f5476;
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
+    padding-top: 30px; /* Place content 60px from the top */
     transition: 0.6s; /* 0.5 second transition effect to slide in the sidenav */
     transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
@@ -90,10 +90,11 @@ body::-webkit-scrollbar {
     border-radius: 10px;
     text-align: center;
     padding: 8px 0 8px 0;
+
 }
 
-#sidenavTrigger {
-    height: 100%; /* 100% Full-height */
+#sidenavTrigger a:hover {
+height: 20%; /* 100% Full-height */
     min-width: 40px; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     left: 0;
@@ -104,7 +105,7 @@ body::-webkit-scrollbar {
 
 
 /* The navigation menu links */
-.sidenav a {
+.sidenav a:hover {
     white-space: nowrap;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -173,7 +174,7 @@ table {
     flex-direction: row;
     left: 1rem;
     bottom: 0;
-    width: 83%;
+    width: 20%;
     border-top: darkorange 2px solid;
     margin-bottom: .2rem;
 }

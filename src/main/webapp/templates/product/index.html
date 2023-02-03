@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <title>Fajny shop</title>
-
+    <script src="/static/JS/sidemenu.js" defer></script>
+    <script src="/static/JS/navbar.js" defer></script>
     <!-- Bootstrap components -->
     <!-- Latest compiled and minified Jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -32,41 +33,37 @@
 
 </head>
 
-<body>
-<a href="/register">Register</a>
-<a href="/login">Login</a>
+<body background="static/img/background.jpg">
 
-<center>
-    <form method="post" action="Register">
-        Name:<input type="text" name="name" /><br/><br/>
-        Email ID:<input type="text" name="email" /><br/><br/>
-        Password:<input type="text" name="pass" /><br/><br/>
-        <input type="submit" value="Register" /><br/>
-    </form>
-</center>
-<div class="center "><a href="/"><img alt="logo" src="../static/img/logo.png"
+<div>
+    <button class="btn btn-secondary float-right" onclick="location.href='emp-register.jsp'" style="height:auto;">Register</button>
+    <button class="btn btn-success float-right" onclick="location.href='emp-login.jsp'" style="height:auto;">Login</button>
+    <button class="btn btn-danger float-right" onclick="location.href='emp-logout-success.jsp'" style="height:auto;">Logout</button>
+</div>
+
+<div class="float-center "><a href="/"><img alt="logo" src='static/img/logo.png'
                                       width="35%" height="35%"></a></div>
-<div class="jumbotron text-center">
-    <a href="/" id="main-title"><h1>Fajny shop</h1></a>
+<div class="jumbotron text-left"style="background-color:transparent">
+    <a href="/" id="main-title"><h1 class="text-warning">Fajny shop</h1></a>
 
 <div id="sidenavTrigger"></div>
 <div id="sideNavMenu" class="sidenav">
 
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a class="navBarDropButton" data-toggle="collapse" href="#categoriesCollapse" role="button"
+    <a class="navBarDropButton btn btn-secondary" data-toggle="collapse" href="#categoriesCollapse" role="button"
        aria-expanded="false" aria-controls="categoriesCollapse">
         Categories </a>
     <div class="card card-body" id="categoriesCollapse">
-        <p th:each="category,iterStat : ${allcategories}"><a class="sidenav-a"
+        <p th:each="category,iterStat : ${allcategories}"><a class="sidenav-a btn btn-warning"
                                                              th:attr="href='/?categoryId=' + ${category.getId()}"
                                                              th:text="${category.getName()}"></a></p>
     </div>
 
-    <a class="navBarDropButton" data-toggle="collapse" href="#suppliersCollapse" role="button" aria-expanded="false"
+    <a class="navBarDropButton btn btn-secondary" data-toggle="collapse" href="#suppliersCollapse" role="button" aria-expanded="false"
        aria-controls="suppliersCollapse">
         Suppliers </a>
-    <div class="card card-body" id="suppliersCollapse">
-        <p th:each="vendor,iterStat : ${allsuppliers}"><a class="sidenav-a"
+    <div class="card card-body " id="suppliersCollapse">
+        <p th:each="vendor,iterStat : ${allsuppliers}"><a class="sidenav-a btn btn-warning"
                                                           th:attr="href='/?supplierId=' + ${vendor.getId()}"
                                                           th:text="${vendor.getName()}"></a></p>
     </div>

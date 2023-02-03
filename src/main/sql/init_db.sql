@@ -40,18 +40,19 @@ CREATE TABLE public.supplier
     description text
 );
 
-DROP TABLE IF EXISTS public.users;
-CREATE TABLE public.users
-(
-
-    username        char,
-    password        char,
-    emailadress     char
+DROP TABLE IF EXISTS public.employee;
+CREATE TABLE employee (
+                          id int NOT NULL,
+                          first_name varchar(20) DEFAULT NULL,
+                          last_name varchar(20) DEFAULT NULL,
+                          username varchar(250) DEFAULT NULL,
+                          password varchar(20) DEFAULT NULL,
+                          address varchar(45) DEFAULT NULL,
+                          contact varchar(45) DEFAULT NULL,
+                          PRIMARY KEY (id)
 );
-
-INSERT INTO users (name, password,email)
-VALUES ('admin', '123','admin@admin.com')
-      ;
+INSERT INTO employee (id,first_name, last_name,username,password,address,contact)
+VALUES ('1','admin','admin','admin','123','misisipi kurła','0-700-880');
 
 INSERT INTO supplier (name, description)
 VALUES ('fajny1', 'opis'),
