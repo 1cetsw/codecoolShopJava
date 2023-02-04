@@ -5,9 +5,9 @@
     <meta name="author" content="Codecool"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <title>Fajny shop</title>
-    <script src="/static/JS/sidemenu.js" defer></script>
-    <script src="/static/JS/navbar.js" defer></script>
+    <title>Auto Parts Shop</title>
+    <script src="static/JS/sidemenu.js" defer></script>
+    <script src="static/JS/navbar.js" defer></script>
     <!-- Bootstrap components -->
     <!-- Latest compiled and minified Jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -28,76 +28,84 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
-
-    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/main.css"/>
 
 </head>
 
-<body background="static/img/background.jpg">
+<body>
 
-<div>
-    <button class="btn btn-secondary float-right" onclick="location.href='emp-register.jsp'" style="height:auto;">Register</button>
-    <button class="btn btn-success float-right" onclick="location.href='emp-login.jsp'" style="height:auto;">Login</button>
-    <button class="btn btn-danger float-right" onclick="location.href='emp-logout-success.jsp'" style="height:auto;">Logout</button>
+
+
+
+
+
+<div class="jumbotron text-center">
+
+    <a href="/" id="main-title">
+     <img alt="logo" src="static/img/logo.png"
+                                              width="25%" height="25%">
+    </a>
+    <div class="float-right">
+        <button class="btn btn-secondary " onclick="location.href='emp-register.jsp'" style="height:auto;">Register</button>
+        <button class="btn btn-success " onclick="location.href='emp-login.jsp'" style="height:auto;">Login</button>
+        <button class="btn btn-danger " onclick="location.href='emp-logout-success.jsp'" style="height:auto;">Logout</button>
+    </div>
+
 </div>
 
-<div><a href="/"><img alt="logo" src='static/img/logo.png'
-                                      width="60%" height="60%"></a></div>
-
-<div id="main" class="container" >
-    <div th:if="${supplier != null}" class="sub-title">
-        <strong th:text="${supplier.name}">Supplier Title</strong>
-    </div>
-    <div th:if="${category != null}" class="sub-title">
-        <strong th:text="${category.name}">Category Title</strong>
-    </div>
-</div>
-
-<div class="jumbotron text-left"style="background-color:transparent">
-    <a href="/" id="main-title"><h1 class="text-warning"> </h1></a>
-
-<div id="sidenavTrigger" ></div>
-<div id="sideNavMenu" class="sidenav" style="flex-direction: row;">
+<div id="sidenavTrigger"></div>
+<div id="sideNavMenu" class="sidenav">
 
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a class="navBarDropButton btn btn-secondary dropdown" data-toggle="collapse" href="#categoriesCollapse" role="button"
+    <a class="navBarDropButton" data-toggle="collapse" href="#categoriesCollapse" role="button"
        aria-expanded="false" aria-controls="categoriesCollapse">
         Categories </a>
-    <div class=" card-body" id="categoriesCollapse">
-        <p th:each="category,iterStat : ${allcategories}"><a class="sidenav-a btn btn-warning"
+    <div class="card-body" id="categoriesCollapse">
+        <p th:each="category,iterStat : ${allcategories}"><a class="sidenav-a"
                                                              th:attr="href='/?categoryId=' + ${category.getId()}"
                                                              th:text="${category.getName()}"></a></p>
     </div>
 
-    <a class="navBarDropButton btn btn-secondary" data-toggle="collapse" href="#suppliersCollapse" role="button" aria-expanded="false"
+
+    <a class="navBarDropButton" data-toggle="collapse" href="#suppliersCollapse" role="button" aria-expanded="false"
        aria-controls="suppliersCollapse">
         Suppliers </a>
-    <div class="card-body " id="suppliersCollapse">
-        <p th:each="vendor,iterStat : ${allsuppliers}"><a class="sidenav-a btn btn-warning"
+    <div class="card-body" id="suppliersCollapse">
+        <p th:each="vendor,iterStat : ${allsuppliers}"><a class="sidenav-a"
                                                           th:attr="href='/?supplierId=' + ${vendor.getId()}"
                                                           th:text="${vendor.getName()}"></a></p>
     </div>
 
-
 </div>
 
 
+<div id="main" class="container">
+
+    <div th:if="${category != null}" class="sub-title">
+        <strong th:text="${category.name}">Category Title</strong>
+    </div>
+    <div th:if="${supplier != null}" class="sub-title">
+        <strong th:text="${supplier.name}">Supplier Title</strong>
+    </div>
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="card">
-                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='static/img/product_' + ${prod.id} + '.jpg'" alt="" />
+                <img class="" src="http://placehold.it/400x250/000/fff"
+                     th:attr="src='static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
                 <div class="card-header">
-                    <h4 class="card-title" th:text="${prod.name}">Product name</h4>
+                    <a th:attr="href='product?productId=' + ${prod.getId()}"><h4 class="card-title"
+                                                                                  th:text="${prod.name}">Product
+                        name</h4></a>
                     <p class="card-text" th:text="${prod.description}">Product description... </p>
                 </div>
                 <div class="card-body">
                     <div class="card-text">
-                        <p class="lead" th:text="${prod.getPrice}"> USD</p>
+                        <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success  add-to-cart-button" th:attr="href='/cart?productId=' + ${prod.id}" >
-                            Add to cart</a>
+                        <a class="btn btn-success add-to-cart-button" th:attr="data-index-number='' + ${prod.getId()}">Add
+                            to cart</a>
                     </div>
                 </div>
             </div>
@@ -107,7 +115,6 @@
 </div>
 
 <div th:replace="footer.html :: copy"></div>
-</div>
 
 </body>
 </html>
