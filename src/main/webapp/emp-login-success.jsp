@@ -29,7 +29,9 @@
 <body background="static/img/background.jpg">
 <div align="center" >
   <h1 class="text-warning">You have logined successfully</h1>
-  <button class="btn btn-warning text-secondary" onclick="location.href='#'" style="height:auto;">HomePage</button>
+  <button class="btn btn-warning text-secondary" onclick="location.href='<%= response.encodeURL(request.getContextPath() + "/") %>'" style="height:auto;">HomePage</button>
+
+
 </div>
 </body>
 </html>

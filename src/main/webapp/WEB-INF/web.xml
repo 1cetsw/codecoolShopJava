@@ -5,7 +5,15 @@
 <display-name>CodecoolShop Application</display-name>
 
 
+<!--	<servlet>-->
+<!--		<servlet-name>controlServlet</servlet-name>-->
+<!--		<servlet-class>com.codecool.shop.controller.ProductController</servlet-class>-->
+<!--	</servlet>-->
 
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>controlServlet</servlet-name>-->
+<!--		<url-pattern>/home</url-pattern>-->
+<!--	</servlet-mapping>-->
 
 
 	<servlet-mapping>

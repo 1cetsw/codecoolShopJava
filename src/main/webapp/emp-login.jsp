@@ -49,6 +49,9 @@
         <p>You don't have an account?
             <button class="btn btn-warning " onclick="location.href='emp-register.jsp'" style="height:auto;">Register
             </button>
+            <button class="btn btn-warning " onclick="location.href='<%= response.encodeURL(request.getContextPath() + "/") %>'" style="height:auto;">Back to HomePage
+            </button>
+
         </p>
     </div>
 </div>

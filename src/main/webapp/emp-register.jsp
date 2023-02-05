@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+         pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +32,7 @@
 </head>
 <body background="static/img/background.jpg">
 <div align="center" class="text-warning">
-    <h1 class="text-warning" >Employee Register Form</h1>
+    <h1 class="text-warning">Employee Register Form</h1>
     <form class="form-group col-md-6" action="<%= request.getContextPath() %>/register" method="post">
         <table style="with: 80%" class="text-warning">
             <tr>
@@ -41,7 +41,7 @@
             </tr>
             <tr>
                 <td>Last Name</td>
-                <td><input type="text" name="lastName" placeholder="Last Name" /></td>
+                <td><input type="text" name="lastName" placeholder="Last Name"/></td>
             </tr>
             <tr>
                 <td>UserName</td>
@@ -57,12 +57,20 @@
             </tr>
             <tr>
                 <td>Phone number</td>
-                <td><input type="text" name="contact" placeholder="Phone number" /></td>
+                <td><input type="text" name="contact" placeholder="Phone number"/></td>
             </tr>
         </table>
-        <input class="btn btn-success" type="submit" value="Register" />
+        <input class="btn btn-success" type="submit" value="Register"/>
     </form>
-    <p>You have account? ?  <button class="btn btn-warning" onclick="location.href='emp-login.jsp'" style="height:auto;">Login</button></p>
+    <p>You have account? ?
+        <button class="btn btn-warning" onclick="location.href='emp-login.jsp'" style="height:auto;">Login</button>
+        <button class="btn btn-warning "
+                onclick="location.href='<%= response.encodeURL(request.getContextPath() + "/") %>'"
+                style="height:auto;"> Back to HomePage
+        </button>
+
+
+    </p>
 </div>
 </body>
 </html>

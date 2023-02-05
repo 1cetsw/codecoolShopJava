@@ -30,7 +30,8 @@
 <div align="center">
     <h1 class="text-warning">Wrong Login or Password</h1>
     <h1 class="text-danger">Access Denied</h1>
-    <button class="btn btn-warning text-secondary" onclick="location.href='/*'" style="height:auto;">HomePage</button>
+    <button class="btn btn-warning " onclick="location.href='<%= response.encodeURL(request.getContextPath() + "/") %>'" style="height:auto;">Back to HomePage</button>
+    <button class="btn btn-warning" onclick="location.href='emp-login.jsp'" style="height:auto;">Try Login Again</button>
 </div>
 </body>
 </html>

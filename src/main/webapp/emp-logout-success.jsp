@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
-<%@page import="com.codecool.shop.dao.implementation.jdbc.EmpLoginDaoJDBC"%>
+         pageEncoding="ISO-8859-1" %>
+<%@page import="com.codecool.shop.dao.implementation.jdbc.EmpLoginDaoJDBC" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,16 +28,20 @@
 </head>
 <body background="static/img/background.jpg">
 <div align="center" class="text-warning">
-    <h1 >You have logout successfully</h1>
+    <h1>You have logout successfully</h1>
     <p>You don't have an account?
         <button class="btn btn-warning " onclick="location.href='emp-register.jsp'" style="height:auto;">Register
         </button>
     </p>
-    <p>You don't have an account?
+    <p>You have an account?
         <button class="btn btn-warning " onclick="location.href='emp-login.jsp'" style="height:auto;">Login
         </button>
-    </p>
-    <button class="btn btn-warning text-secondary" onclick="location.href='#'" style="height:auto;">HomePage</button>
+
+        <button class="btn btn-warning"
+                onclick="location.href='<%= response.encodeURL(request.getContextPath() + "/") %>' "
+                style="height:auto;">HomePage
+        </button>
+
 </div>
 </body>
 </html>
