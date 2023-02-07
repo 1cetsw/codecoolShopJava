@@ -2,6 +2,7 @@ package com.codecool.shop.controller;
 
 
 import java.io.IOException;
+import java.io.Serial;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,13 +10,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.codecool.shop.dao.implementation.DatabaseConnection;
 import com.codecool.shop.dao.implementation.jdbc.EmpRegisterDaoJDBC;
 import com.codecool.shop.model.EmpRegister;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @WebServlet(name = "RegisterServlet", value = "/register")
 public class EmpRegisterServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+    private static final Logger logger = LoggerFactory.getLogger(DatabaseConnection.class);
+    @Serial
+    public static final long serialVersionUID = 1L;
     private EmpRegisterDaoJDBC employeeDao;
 
     public void init() {
@@ -42,12 +48,14 @@ public class EmpRegisterServlet extends HttpServlet {
 
         try {
             employeeDao.registerEmployee(employee);
+            logger.info("Trying registration",firstName,lastName,username);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         response.sendRedirect("emp-register-success.jsp");
+        logger.info("Registration succes, new user: ",username);
     }
 
 }

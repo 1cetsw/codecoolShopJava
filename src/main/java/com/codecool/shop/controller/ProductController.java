@@ -6,8 +6,8 @@ import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.service.ActiveDataSourceService;
 import com.codecool.shop.service.ProductService;
-
 import com.codecool.shop.service.SupplierService;
+import lombok.extern.slf4j.Slf4j;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import javax.servlet.ServletException;
@@ -16,14 +16,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+@Slf4j
 @WebServlet(urlPatterns = {"/", "/category"})
 public class ProductController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ActiveDataSourceService activeDataSourceService = ActiveDataSourceService.getInstance();
-
+        log.info("Connection to database");
         //DAO
         ProductDao productDataStore = activeDataSourceService.getActiveProductDao();
         SupplierDao supplierDataStore = activeDataSourceService.getActiveSupplierDao();

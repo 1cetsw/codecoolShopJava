@@ -19,6 +19,10 @@
         <version.plugin.jetty>9.4.30.v20200611</version.plugin.jetty>
         <version.javax.servlet.api>4.0.1</version.javax.servlet.api>
         <version.thymeleaf>3.0.11.RELEASE</version.thymeleaf>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <logback.version>1.2.3</logback.version>
+        <javax.mail.version>1.6.2</javax.mail.version>
     </properties>
 
     <build>
@@ -61,14 +65,30 @@
             <version>${version.javax.servlet.api}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.servlet/jsp-api -->
-
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.6</version>
+            <version>1.7.30</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <!-- SMTPAppender need this to send email
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>${javax.mail.version}</version>
+        </dependency>
+		-->
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -84,11 +104,12 @@
             <scope>provided</scope>
         </dependency>
 
-       <dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>2.14.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 
 
         <dependency>

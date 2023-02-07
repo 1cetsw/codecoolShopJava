@@ -4,9 +4,12 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.postgresql.ds.PGSimpleDataSource;
 
 public abstract class DatabaseConnection {
+    private static final Logger logger = LoggerFactory.getLogger(DatabaseConnection.class);
     protected DataSource dataSource;
 
     public void connect(String dbName, String user, String password) throws SQLException {
@@ -16,9 +19,9 @@ public abstract class DatabaseConnection {
         dataSource.setUser(user);
         dataSource.setPassword(password);
 
-        System.out.println("Trying to connect");
+        logger.info("Trying to connect AutoPartsShop Database");
         dataSource.getConnection().close();
-        System.out.println("Connection ok.");
+        logger.info("Successfully Connected");
 
         this.dataSource = dataSource;
     }

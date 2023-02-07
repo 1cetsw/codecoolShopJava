@@ -1,11 +1,14 @@
 package com.codecool.shop.model;
 
 
+import java.io.Serial;
 import java.io.Serializable;
 
 
 public class EmpRegister implements Serializable {
 
+
+    @Serial
     private static final long serialVersionUID = 1L;
     private String firstName;
     private String lastName;

@@ -7,10 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.codecool.shop.dao.implementation.DatabaseConnection;
 import com.codecool.shop.model.EmpLogin;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EmpLoginDaoJDBC {
-
+    private static final Logger logger = LoggerFactory.getLogger(DatabaseConnection.class);
     public boolean validate(EmpLogin empLogin) throws ClassNotFoundException {
         boolean status = false;
 
@@ -24,8 +27,9 @@ public class EmpLoginDaoJDBC {
                      .prepareStatement("select * from employee where username = ? and password = ? ")) {
             preparedStatement.setString(1, empLogin.getUsername());
             preparedStatement.setString(2, empLogin.getPassword());
+            logger.info("Login USER");
+            logger.info(preparedStatement.toString());
 
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             status = rs.next();
 
@@ -42,12 +46,13 @@ public class EmpLoginDaoJDBC {
         for (Throwable e: ex) {
             if (e instanceof SQLException) {
                 e.printStackTrace(System.err);
+
                 System.err.println("SQLState: " + ((SQLException) e).getSQLState());
                 System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
                 System.err.println("Message: " + e.getMessage());
                 Throwable t = ex.getCause();
                 while (t != null) {
-                    System.out.println("Cause: " + t);
+                    logger.info("Cause: " + t);
                     t = t.getCause();
                 }
             }

@@ -4,12 +4,15 @@ package com.codecool.shop.service;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
+import com.codecool.shop.dao.implementation.DatabaseConnection;
 import com.codecool.shop.dao.implementation.jdbc.ProductCategoryDaoJDBC;
 import com.codecool.shop.dao.implementation.jdbc.ProductDaoJDBC;
 import com.codecool.shop.dao.implementation.jdbc.SupplierDaoJDBC;
 import com.codecool.shop.dao.implementation.mem.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.mem.ProductDaoMem;
 import com.codecool.shop.dao.implementation.mem.SupplierDaoMem;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import java.io.FileNotFoundException;
@@ -19,6 +22,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class ActiveDataSourceService {
+    private static final Logger logger = LoggerFactory.getLogger(DatabaseConnection.class);
     private static ActiveDataSourceService instance;
     private ProductDao activeProductDao;
     private SupplierDao activeSupplierDao;
@@ -43,12 +47,12 @@ public class ActiveDataSourceService {
 
     public void init() throws SQLException {
         if (useMemDao) {
-
+            logger.info("Display mem mode");
             activeProductDao = ProductDaoMem.getInstance();
             activeSupplierDao = SupplierDaoMem.getInstance();
             activeProductCategoryDao = ProductCategoryDaoMem.getInstance();
         } else {
-
+            logger.info("Display jdbc mode");
             ProductDaoJDBC.getInstance().connect(database, user, password);
             SupplierDaoJDBC.getInstance().connect(database, user, password);
             ProductCategoryDaoJDBC.getInstance().connect(database, user, password);
@@ -97,7 +101,7 @@ public class ActiveDataSourceService {
             password = prop.getProperty("password");
 
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            logger.info("Exception: " + e);
         } finally {
             inputStream.close();
         }

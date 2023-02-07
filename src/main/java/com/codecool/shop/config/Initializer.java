@@ -3,11 +3,14 @@ package com.codecool.shop.config;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
+import com.codecool.shop.dao.implementation.DatabaseConnection;
 import com.codecool.shop.dao.implementation.mem.*;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
 import com.codecool.shop.service.ActiveDataSourceService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import javax.servlet.ServletContextEvent;
@@ -18,6 +21,7 @@ import java.sql.SQLException;
 
 @WebListener
 public class Initializer implements ServletContextListener {
+    private static final Logger logger = LoggerFactory.getLogger(DatabaseConnection.class);
 
     public static AllUsersCartsDaoImpl usersCarts = new AllUsersCartsDaoImpl();
     public static UserCartDaoImpl userCart = new UserCartDaoImpl("Test User", 0);
@@ -25,7 +29,7 @@ public class Initializer implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ActiveDataSourceService activeDataSourceService = ActiveDataSourceService.getInstance();
-
+        logger.info("PAGE LOADED FROM DATABASE");
         try {
             activeDataSourceService.getConfig();
 
@@ -49,7 +53,7 @@ public class Initializer implements ServletContextListener {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
-
+        logger.info("PAGE LOADED FROM MEMORY");
         //setting up a new supplier
         Supplier supp1 = new Supplier("aaa", "opis aaa");
         Supplier supp2 = new Supplier("bbb", "opis bbbb");
@@ -63,8 +67,8 @@ public class Initializer implements ServletContextListener {
 
         //Setting all users carts list
         usersCarts.addNewCart(userCart);
-        System.out.println(usersCarts.getUserCart(0));
-        System.out.println("blablablablalblalslaldsfdsfsdfstrwtrwtrwtrwgtwregwdgdsfdsgdsg");
+        logger.info(usersCarts.getUserCart(0).toString());
+
 
         //setting up a new product category
         ProductCategory cat1 = new ProductCategory("a1", "abc", "opis a1");

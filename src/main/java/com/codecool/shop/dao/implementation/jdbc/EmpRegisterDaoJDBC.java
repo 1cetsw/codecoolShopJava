@@ -6,13 +6,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import com.codecool.shop.dao.implementation.DatabaseConnection;
 import com.codecool.shop.model.EmpRegister;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EmpRegisterDaoJDBC {
+    private static final Logger logger = LoggerFactory.getLogger(DatabaseConnection.class);
 
     public int registerEmployee(EmpRegister employee) throws ClassNotFoundException {
         String INSERT_USERS_SQL = "INSERT INTO employee" +
-                "  (id, first_name, last_name, username, password, address, contact) VALUES " +
+                "  (id,first_name, last_name, username, password, address, contact) VALUES " +
                 " (?, ?, ?, ?, ?,?,?);";
 
         int result = 0;
@@ -33,7 +37,7 @@ public class EmpRegisterDaoJDBC {
             preparedStatement.setString(6, employee.getAddress());
             preparedStatement.setString(7, employee.getContact());
 
-            System.out.println(preparedStatement);
+            logger.info(preparedStatement.toString());
             // Step 3: Execute the query or update query
             result = preparedStatement.executeUpdate();
 
@@ -53,7 +57,7 @@ public class EmpRegisterDaoJDBC {
                 System.err.println("Message: " + e.getMessage());
                 Throwable t = ex.getCause();
                 while (t != null) {
-                    System.out.println("Cause: " + t);
+                    logger.info("Cause: " + t);
                     t = t.getCause();
                 }
             }
