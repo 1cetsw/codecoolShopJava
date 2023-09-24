@@ -1,5 +1,22 @@
 # CodeCoolSHOP (sprint 1)
 
+## Installation Back-End Java Spring
+
+
+1. Clone the repository: `git clone https://github.com/1cetsw/codecoolShopJava.git`
+2. Open the project in your preferred IDE (e.g., IntelliJ IDEA, Eclipse).
+3. Configure the database connection in the `config.properties` file.
+4. Run the project.
+
+
+## Technologies Used
+
+- Front-end: Thymeleaf, HTML, CSS, JavaScript
+- Back-end: Java , Spring
+- Database: [PostgreSQL](https://www.google.com/search?q=Postgresql)
+
+
+
 ## Story
 Everyone loves to buy and sell stuff, but we need a shop for that! In this project, the goal is to build one of the most common type of websites on the web: an online eCommerce web-application, where users can browse products, add them into a shopping cart, then check out and make payments.
 
@@ -235,3 +252,13 @@ All code is pushed to GitHub repository in atomic commits. The implemented featu
 It's not required to integrate real payment services - you can use fake payment implementations.
 Use the DAO implementations via interfaces so that it will be easy to change the implementation behind the interface.
 You can use decimal(20,2) sql type to store your decimal values in the database
+
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+For any questions or inquiries, please contact  
+Krzysztof [1cetsw@gmail.com].
